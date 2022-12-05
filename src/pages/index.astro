@@ -1,0 +1,16 @@
+---
+import { Button, Hero } from "@everybody-gives/ui";
+
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="everybody.gives">
+	<main class="min-h-full flex items-center flex-col justify-center p-[100px]">
+		<Hero />
+		<div class="mt-5 sm:mt-8 flex self-start">
+			<a href="/new-group">
+				<Button width={200}>GET STARTED</Button>
+			</a>
+		</div>
+	</main>
+</Layout>

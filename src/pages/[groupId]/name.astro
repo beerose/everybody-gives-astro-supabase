@@ -1,0 +1,42 @@
+---
+import { Sheet, Card } from "@everybody-gives/ui";
+import Layout from "../../layouts/Layout.astro";
+import { supabase } from "../../supabase";
+
+const { groupId } = Astro.params;
+
+const { data, error } = await supabase
+  .from("members")
+  .select("name")
+  .eq("group_id", groupId);
+
+if (error) {
+  console.error(error);
+  throw error;
+}
+
+const members = data.map((m) => m.name);
+---
+
+<Layout title="Select name">
+  <Sheet>
+    <h1
+      class="mt-1 text-5xl font-black tracking-tight text-gray-700 text-center"
+    >
+      Select your name
+    </h1>
+    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 pt-10">
+      {
+        members?.map((member) => {
+          return (
+            <Card
+              href={`/${groupId}?user=${member}`}
+              title={member}
+              className="bg-background hover:scale-105"
+            />
+          );
+        })
+      }
+    </ul>
+  </Sheet>
+</Layout>

@@ -1,0 +1,29 @@
+---
+import "../styles/index.css";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<title>{title || "everybody-gives"}</title>
+		<link rel="icon" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin="true"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300;400;500;700;800;900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="min-h-full w-full flex z-50"><slot /></div>
+	</body>
+</html>
