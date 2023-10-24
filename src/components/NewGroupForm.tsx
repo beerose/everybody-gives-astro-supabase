@@ -75,7 +75,7 @@ export const NewGroupForm = () => {
             key={personIdx}
             title={memberName}
             onDelete={() => {
-              setMembers(prev => prev.filter(m => m === memberName))
+              setMembers(prev => prev.filter(m => m !== memberName))
             }}
           />
         ))}
